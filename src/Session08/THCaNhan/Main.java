@@ -18,9 +18,7 @@ public class Main {
             System.out.println("4. Sap xep theo diem giam dan");
             System.out.println("5. Thoat");
             System.out.print("Hay nhap lua chon cua ban: ");
-
             choice = bt.nextInt();
-            bt.nextLine(); // xoa bo dem
 
             switch (choice) {
                 case 1: {
