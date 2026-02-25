@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Phan01 {
     public static String upperCase(String up) {
-        return up.substring(0, 1).toUpperCase() + up.substring(1).toLowerCase() + " ";
+        return up.substring(0, 1).toUpperCase() + up.substring(1).toLowerCase();
     }
 
     public static void main(String[] args) {
@@ -25,8 +25,10 @@ public class Phan01 {
             }
         }
 
-        if (!word.isEmpty()) {
-            result += upperCase(word);
+        String[] arr = word.trim().split("\\s+");
+
+        for (int i = 0; i < arr.length; i++) {
+            result += upperCase(arr[i]) + " ";
         }
         System.out.println(result.trim());
     }
