@@ -6,9 +6,9 @@ import java.util.List;
 
 public class Service {
     private List<Medicine> cart = new ArrayList<>();
-
     private Medicine findById(String id) {
-        for (Medicine m : cart) {
+        for (int i = 0; i < cart.size(); i++) {
+            Medicine m = cart.get(i);
             if (m.getDrugId().equalsIgnoreCase(id)) {
                 return m;
             }
@@ -21,10 +21,10 @@ public class Service {
 
         if (existing != null) {
             existing.setQuantity(existing.getQuantity() + medicine.getQuantity());
-            System.out.println("Đã cộng dồn số lượng.");
+            System.out.println("Da cong don so luong.");
         } else {
             cart.add(medicine);
-            System.out.println("Đã thêm thuốc vào đơn.");
+            System.out.println("Da them thuoc vao don.");
         }
     }
 
@@ -32,16 +32,16 @@ public class Service {
         Medicine m = findById(id);
 
         if (m == null) {
-            System.out.println("Không tìm thấy thuốc.");
+            System.out.println("Khong tim thay thuoc.");
             return;
         }
 
         if (newQuantity == 0) {
             cart.remove(m);
-            System.out.println("Đã xóa thuốc khỏi đơn.");
+            System.out.println("Da xoa thuoc khoi don.");
         } else {
             m.setQuantity(newQuantity);
-            System.out.println("Đã cập nhật số lượng.");
+            System.out.println("Da cap nhat so luong.");
         }
     }
 
@@ -50,35 +50,33 @@ public class Service {
         while (it.hasNext()) {
             if (it.next().getDrugId().equalsIgnoreCase(id)) {
                 it.remove();
-                System.out.println("Đã xóa thuốc.");
+                System.out.println("Da xoa thuoc.");
                 return;
             }
         }
-        System.out.println("Không tìm thấy thuốc.");
+        System.out.println("Khong tim thay thuoc.");
     }
 
     public void printInvoice() {
         if (cart.isEmpty()) {
-            System.out.println("Đơn thuốc trống.");
+            System.out.println("Don thuoc trong.");
             return;
         }
 
         double total = 0;
 
-        System.out.println("\n===== HÓA ĐƠN =====");
-        System.out.printf("%-10s %-20s %-12s %-10s %-12s\n",
-                "Mã", "Tên", "Đơn giá", "SL", "Thành tiền");
+        System.out.println("\n===== HOA DON =====");
+        System.out.printf("%-10s %-20s %-12s %-10s %-12s\n", "Ma", "Ten", "Don gia", "SL", "Thanh tien");
 
         for (Medicine m : cart) {
             System.out.println(m);
             total += m.getTotalPrice();
         }
 
-        System.out.printf("TỔNG TIỀN: %.0f VNĐ\n", total);
+        System.out.printf("TONG TIEN: %.0f VND\n", total);
 
-        // Xóa đơn sau khi in
         cart.clear();
-        System.out.println("Đã xóa đơn thuốc sau khi in.");
+        System.out.println("Da xoa don thuoc sau khi in.");
     }
 
     public void findCheapMedicines() {
@@ -91,7 +89,7 @@ public class Service {
             }
         }
         if (!found) {
-            System.out.println("Không có thuốc giá dưới 50.000 VNĐ.");
+            System.out.println("Khong co thuoc gia duoi 50000 VND.");
         }
     }
 }
