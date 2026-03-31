@@ -12,10 +12,9 @@ public class SupportService {
         List<Booking> list = bookingDAO.findByStaffId(staffId);
 
         if (list.isEmpty()) {
-            System.out.println("Không có công việc");
+            System.out.println("Khong co cong viec");
             return;
         }
-
         for (Booking b : list) {
             System.out.println("ID: " + b.getId() + " | Status: " + b.getStatus() +
                     " | Prep: " + b.getPreparationStatus()
@@ -27,23 +26,21 @@ public class SupportService {
         Booking b = bookingDAO.findById(bookingId);
 
         if (b == null) {
-            System.out.println("Không tìm thấy booking!");
+            System.out.println("Khong tim thay booking");
             return;
         }
-
         if (!b.getStatus().equals("APPROVED")) {
-            System.out.println("Chỉ update booking đã APPROVED!");
+            System.out.println("Chi update booking da APPROVED");
             return;
         }
-
         if (b.getSupportStaffId() != staffId) {
-            System.out.println("Bạn không được phân công booking này!");
+            System.out.println("Ban khong duoc phan cong booking nay");
             return;
         }
 
         b.setPreparationStatus(status);
         bookingDAO.update(b);
 
-        System.out.println("Cập nhật thành công!");
+        System.out.println("Cap nhat thanh cong");
     }
 }

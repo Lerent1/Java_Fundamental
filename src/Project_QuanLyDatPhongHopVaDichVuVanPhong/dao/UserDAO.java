@@ -8,29 +8,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class UserDAO {
-//    public boolean insert(User user) {
-//        String sql = "INSERT INTO users(username, password, role) VALUES (?, ?, ?)";
-//
-//        try (Connection conn = JDBCConnection.getConnection();
-//             PreparedStatement ps = conn.prepareStatement(sql)) {
-//
-//            ps.setString(1, user.getUsername());
-//            ps.setString(2, user.getPassword());
-//
-//            ps.setString(3, user.getRole());
-//
-//            return ps.executeUpdate() > 0;
-//
-//        } catch (Exception e) {
-//            if (e.getMessage().contains("Duplicate")) {
-//                System.out.println("Username already exists!");
-//            } else {
-//                System.out.println("Insert user error: " + e.getMessage());
-//            }
-//            return false;
-//        }
-//    }
-
     public boolean insert(User user) {
         String sql = "INSERT INTO users(username, password, role, fullname, email, phone) VALUES (?, ?, ?, ?, ?, ?)";
 
@@ -55,30 +32,6 @@ public class UserDAO {
             return false;
         }
     }
-
-//    public User findByUsername(String username) {
-//        String sql = "SELECT * FROM users WHERE username = ?";
-//
-//        try (Connection conn = JDBCConnection.getConnection();
-//             PreparedStatement ps = conn.prepareStatement(sql)) {
-//
-//            ps.setString(1, username);
-//            ResultSet rs = ps.executeQuery();
-//
-//            if (rs.next()) {
-//                User u = new User();
-//                u.setId(rs.getInt("id"));
-//                u.setUsername(rs.getString("username"));
-//                u.setPassword(rs.getString("password"));
-//                u.setRole(rs.getString("role"));
-//                return u;
-//            }
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        return null;
-//    }
 
     public User findByUsername(String username) {
         String sql = "SELECT * FROM users WHERE username = ?";

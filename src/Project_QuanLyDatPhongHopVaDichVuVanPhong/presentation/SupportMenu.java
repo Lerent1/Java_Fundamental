@@ -37,7 +37,7 @@ public class SupportMenu {
                     };
 
                     if (status == null) {
-                        System.out.println("Lua chon khong hop le!");
+                        System.out.println("Lua chon khong hop le");
                         break;
                     }
 

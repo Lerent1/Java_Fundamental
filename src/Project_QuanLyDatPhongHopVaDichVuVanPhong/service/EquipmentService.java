@@ -10,7 +10,7 @@ public class EquipmentService {
 
     public boolean addEquipment(String name, int total) {
         if (total <= 0) {
-            System.out.println("Tổng số lượng phải > 0");
+            System.out.println("Tong so luong phai > 0");
             return false;
         }
 

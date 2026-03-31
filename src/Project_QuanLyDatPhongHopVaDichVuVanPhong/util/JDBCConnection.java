@@ -16,12 +16,10 @@ public class JDBCConnection {
         try {
             if (connection == null || connection.isClosed()) {
                 connection = DriverManager.getConnection(URL, USER, PASS);
-//                System.out.println("Ket noi thanh cong");
             }
         } catch (Exception e) {
             System.out.println("Ket noi that bai: " + e.getMessage());
         }
-
         return connection;
     }
 }

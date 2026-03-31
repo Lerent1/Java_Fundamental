@@ -8,8 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EquipmentDAO {
-
-    // ================= ADD =================
     public boolean insert(Equipment e) {
         String sql = """
             INSERT INTO equipments(name, total_quantity, available_quantity, status)
@@ -31,7 +29,6 @@ public class EquipmentDAO {
         }
     }
 
-    // ================= VIEW =================
     public List<Equipment> findAll() {
         List<Equipment> list = new ArrayList<>();
         String sql = "SELECT * FROM equipments";
@@ -59,7 +56,6 @@ public class EquipmentDAO {
         return list;
     }
 
-    // ================= UPDATE AVAILABLE =================
     public boolean updateAvailable(int id, int quantity) {
 
         if (quantity < 0) {
@@ -94,7 +90,6 @@ public class EquipmentDAO {
         }
     }
 
-    // ================= DELETE =================
     public boolean delete(int id) {
         String sql = "DELETE FROM equipments WHERE id=?";
 

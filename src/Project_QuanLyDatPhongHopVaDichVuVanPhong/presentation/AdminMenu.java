@@ -27,17 +27,18 @@ public class AdminMenu {
                 System.out.println("2. Xem phong");
                 System.out.println("3. Xoa phong");
                 System.out.println("4. Cap nhat phong");
+                System.out.println("5. Tim kiem phong");
 
-                System.out.println("5. Them thiet bi");
-                System.out.println("6. Xem thiet bi");
-                System.out.println("7. Cap nhat thiet bi");
-                System.out.println("8. Xoa thiet bi");
+                System.out.println("6. Them thiet bi");
+                System.out.println("7. Xem thiet bi");
+                System.out.println("8. Cap nhat thiet bi");
+                System.out.println("9. Xoa thiet bi");
 
-                System.out.println("9. Tao tai khoan SUPPORT");
+                System.out.println("10. Tao tai khoan SUPPORT");
 
-                System.out.println("10. Xem booking cho");
-                System.out.println("11. Duyet booking");
-                System.out.println("12. Tu choi booking");
+                System.out.println("11. Xem booking cho");
+                System.out.println("12. Duyet booking");
+                System.out.println("13. Tu choi booking");
 
                 System.out.println("0. Dang xuat");
                 System.out.print("Lua chon cua ban la: : ");
@@ -49,17 +50,18 @@ public class AdminMenu {
                     case 2 -> viewRooms();
                     case 3 -> deleteRoom();
                     case 4 -> updateRoom();
+                    case 5 -> searchRoom();
 
-                    case 5 -> addEquipment();
-                    case 6 -> viewEquipment();
-                    case 7 -> updateEquipment();
-                    case 8 -> deleteEquipment();
+                    case 6 -> addEquipment();
+                    case 7 -> viewEquipment();
+                    case 8 -> updateEquipment();
+                    case 9 -> deleteEquipment();
 
-                    case 9 -> createSupport();
+                    case 10 -> createSupport();
 
-                    case 10 -> viewPending();
-                    case 11 -> approveBooking();
-                    case 12 -> rejectBooking();
+                    case 11 -> viewPending();
+                    case 12 -> approveBooking();
+                    case 13 -> rejectBooking();
 
                     case 0 -> { return; }
 
@@ -142,6 +144,30 @@ public class AdminMenu {
         System.out.println(roomDAO.update(r) ? "Cap nhat thanh cong" : "That bai");
     }
 
+    private static void searchRoom() {
+        System.out.print("Nhap tu khoa (ten hoac vi tri): ");
+        String keyword = sc.nextLine().toLowerCase().trim();
+
+        List<Room> list = roomDAO.findAll();
+
+        boolean found = false;
+        for (Room r : list) {
+            if (r.getName().toLowerCase().contains(keyword) ||
+                    r.getLocation().toLowerCase().contains(keyword)) {
+
+                System.out.println("ID: " + r.getId() + " | " + r.getName() +
+                        " | Capacity: " + r.getCapacity() +
+                        " | Location: " + r.getLocation());
+
+                found = true;
+            }
+        }
+
+        if (!found) {
+            System.out.println("Khong tim thay phong phu hop");
+        }
+    }
+
     private static void addEquipment() {
         System.out.print("Ten thiet bi: ");
         String name = sc.nextLine();
@@ -156,7 +182,7 @@ public class AdminMenu {
         var list = equipmentService.getAll();
 
         if (list.isEmpty()) {
-            System.out.println("Khong co thiet bi!");
+            System.out.println("Khong co thiet bi");
             return;
         }
 
@@ -228,7 +254,6 @@ public class AdminMenu {
             return;
         }
 
-        // 👉 HIEN THI STAFF
         viewSupportStaff();
         System.out.print("Chon Staff ID: ");
         int staffId = Integer.parseInt(sc.nextLine());

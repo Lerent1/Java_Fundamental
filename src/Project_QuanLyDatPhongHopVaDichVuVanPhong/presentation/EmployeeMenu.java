@@ -182,7 +182,7 @@ public class EmployeeMenu {
 
         if (!username.isEmpty()) {
             if (UserService.isUsernameExists(username) && !username.equals(user.getUsername())) {
-                System.out.println("Username da ton tai!");
+                System.out.println("Username da ton tai");
                 return;
             }
             user.setUsername(username);
@@ -190,15 +190,21 @@ public class EmployeeMenu {
 
         System.out.print("Nhap ho ten moi: ");
         String fullName = sc.nextLine().trim();
-        if (!fullName.isEmpty()) user.setFullname(fullName);
+        if (!fullName.isEmpty()) {
+            user.setFullname(fullName);
+        }
 
         System.out.print("Nhap email moi: ");
         String email = sc.nextLine().trim();
-        if (!email.isEmpty()) user.setEmail(email);
+        if (!email.isEmpty()) {
+            user.setEmail(email);
+        }
 
         System.out.print("Nhap so dien thoai moi: ");
         String phone = sc.nextLine().trim();
-        if (!phone.isEmpty()) user.setPhone(phone);
+        if (!phone.isEmpty()) {
+            user.setPhone(phone);
+        }
 
         boolean result = UserService.updateUser(user);
 

@@ -25,14 +25,14 @@ public class AuthService {
         User user = userDAO.findByUsername(username);
 
         if (user == null) {
-            System.out.println("Không tìm thấy user!");
+            System.out.println("Khong tim thay user");
             return null;
         }
 
         boolean isMatch = PasswordHash.checkPassword(password, user.getPassword());
 
         if (!isMatch) {
-            System.out.println("Sai mật khẩu!");
+            System.out.println("Sai mat khau");
             return null;
         }
 
