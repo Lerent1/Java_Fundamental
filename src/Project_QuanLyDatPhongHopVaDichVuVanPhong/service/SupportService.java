@@ -43,4 +43,8 @@ public class SupportService {
 
         System.out.println("Cap nhat thanh cong");
     }
+
+    public List<Booking> getTasks(int staffId) {
+        return bookingDAO.findByStaffId(staffId);
+    }
 }

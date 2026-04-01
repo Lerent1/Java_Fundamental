@@ -12,7 +12,7 @@ public class CheckValidatie {
             String input = sc.nextLine().trim();
 
             if (input.isEmpty()) {
-                System.out.println("Loi: Khong duoc de trong");
+                System.out.println("Khong duoc de trong");
             } else {
                 return input;
             }
@@ -26,13 +26,13 @@ public class CheckValidatie {
                 int value = Integer.parseInt(sc.nextLine());
 
                 if (value <= 0) {
-                    System.out.println("Loi: Phai nhap so duong");
+                    System.out.println("Phai nhap so duong");
                 } else {
                     return value;
                 }
 
             } catch (Exception e) {
-                System.out.println("Loi: Phai nhap so");
+                System.out.println("Phai nhap so");
             }
         }
     }

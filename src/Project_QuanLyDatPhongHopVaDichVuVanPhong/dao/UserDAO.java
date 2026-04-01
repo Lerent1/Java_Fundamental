@@ -25,9 +25,9 @@ public class UserDAO {
 
         } catch (Exception e) {
             if (e.getMessage().contains("Duplicate")) {
-                System.out.println("Username already exists!");
+                System.out.println("Ten da ton tai");
             } else {
-                System.out.println("Insert user error: " + e.getMessage());
+                System.out.println("Them nguoi dung loi: " + e.getMessage());
             }
             return false;
         }
@@ -72,7 +72,7 @@ public class UserDAO {
             return ps.executeUpdate() > 0;
 
         } catch (Exception e) {
-            System.out.println("Create support error: " + e.getMessage());
+            System.out.println("Tao support that bai: " + e.getMessage());
             return false;
         }
     }

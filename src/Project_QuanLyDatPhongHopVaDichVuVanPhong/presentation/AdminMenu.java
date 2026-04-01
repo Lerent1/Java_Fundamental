@@ -41,7 +41,7 @@ public class AdminMenu {
                 System.out.println("13. Tu choi booking");
 
                 System.out.println("0. Dang xuat");
-                System.out.print("Lua chon cua ban la: : ");
+                System.out.print("Lua chon cua ban la: ");
 
                 int choice = Integer.parseInt(sc.nextLine());
 
@@ -65,7 +65,7 @@ public class AdminMenu {
 
                     case 0 -> { return; }
 
-                    default -> System.out.println("Lua chon khong hop le!");
+                    default -> System.out.println("Lua chon khong hop le");
                 }
 
             } catch (Exception e) {
@@ -78,22 +78,22 @@ public class AdminMenu {
         String name;
 
         do {
-            name = CheckValidatie.inputRequired("Tên phòng: ");
+            name = CheckValidatie.inputRequired("Ten phong: ");
             if (roomDAO.isRoomNameExist(name)) {
-                System.out.println("Tên phòng đã tồn tại!");
+                System.out.println("Ten phong da ton tai");
                 name = null;
             }
         } while (name == null);
 
-        int cap = CheckValidatie.inputPositiveInt("Sức chứa: ");
-        String loc = CheckValidatie.inputRequired("Vị trí: ");
+        int cap = CheckValidatie.inputPositiveInt("Sc chua: ");
+        String loc = CheckValidatie.inputRequired("Vi tri: ");
 
         Room r = new Room();
         r.setName(name);
         r.setCapacity(cap);
         r.setLocation(loc);
 
-        System.out.println(roomDAO.insert(r) ? "Thêm thành công" : "Thất bại");
+        System.out.println(roomDAO.insert(r) ? "Them thanh cong" : "That bai");
     }
 
     private static void viewRooms() {
