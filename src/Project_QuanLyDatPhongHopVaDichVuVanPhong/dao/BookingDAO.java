@@ -27,7 +27,7 @@ public class BookingDAO {
             return rs.next();
 
         } catch (Exception e) {
-            System.out.println("Conflict error: " + e.getMessage());
+            System.out.println("Loi: " + e.getMessage());
             return true;
         }
     }
@@ -51,7 +51,7 @@ public class BookingDAO {
             return ps.executeUpdate() > 0;
 
         } catch (Exception e) {
-            System.out.println("Insert error: " + e.getMessage());
+            System.out.println("Loi: " + e.getMessage());
             return false;
         }
     }
@@ -70,7 +70,7 @@ public class BookingDAO {
             }
 
         } catch (Exception e) {
-            System.out.println("FindById error: " + e.getMessage());
+            System.out.println("Loi: " + e.getMessage());
         }
         return null;
     }
@@ -99,7 +99,7 @@ public class BookingDAO {
             return ps.executeUpdate() > 0;
 
         } catch (Exception e) {
-            System.out.println("Update error: " + e.getMessage());
+            System.out.println("Loi: " + e.getMessage());
             return false;
         }
     }
@@ -119,7 +119,7 @@ public class BookingDAO {
             }
 
         } catch (Exception e) {
-            System.out.println("FindByUser error: " + e.getMessage());
+            System.out.println("Loi: " + e.getMessage());
         }
 
         return list;
@@ -140,7 +140,7 @@ public class BookingDAO {
             }
 
         } catch (Exception e) {
-            System.out.println("Find staff error: " + e.getMessage());
+            System.out.println("Loi: " + e.getMessage());
         }
 
         return list;
@@ -159,7 +159,7 @@ public class BookingDAO {
             }
 
         } catch (Exception e) {
-            System.out.println("FindPending error: " + e.getMessage());
+            System.out.println("Loi: " + e.getMessage());
         }
 
         return list;

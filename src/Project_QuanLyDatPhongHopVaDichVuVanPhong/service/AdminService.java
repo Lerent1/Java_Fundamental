@@ -22,28 +22,28 @@ public class AdminService {
             return;
         }
         if (!b.getStatus().equals("PENDING")) {
-            System.out.println("Chi duyet booking PENDING!");
+            System.out.println("Chi duyet booking PENDING");
             return;
         }
         b.setStatus("APPROVED");
         b.setSupportStaffId(staffId);
 
         if (staffId <= 0) {
-            System.out.println("Staff ID khong hop le!");
+            System.out.println("Staff ID khong hop le");
             return;
         }
 
         b.setPreparationStatus("PREPARING");
 
         bookingDAO.update(b);
-        System.out.println("Duyet thanh cong!");
+        System.out.println("Duyet thanh cong");
     }
 
     public void rejectBooking(int id) {
         Booking b = bookingDAO.findById(id);
 
         if (b == null) {
-            System.out.println("Khong tim thay booking!");
+            System.out.println("Khong tim thay booking");
             return;
         }
         if (!b.getStatus().equals("PENDING")) {
