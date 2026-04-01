@@ -199,8 +199,25 @@ public class AdminMenu {
         System.out.print("ID thiet bi: ");
         int id = Integer.parseInt(sc.nextLine());
 
+        var equipment = equipmentService.getById(id);
+
+        if (equipment == null) {
+            System.out.println("Thiet bi khong ton tai!");
+            return;
+        }
+
         System.out.print("So luong con: ");
         int quantity = Integer.parseInt(sc.nextLine());
+
+        if (quantity < 0) {
+            System.out.println("So luong khong duoc < 0!");
+            return;
+        }
+
+        if (quantity > equipment.getTotalQuantity()) {
+            System.out.println("So luong con khong duoc lon hon tong!");
+            return;
+        }
 
         System.out.println(equipmentService.updateAvailable(id, quantity) ? "Cap nhat thanh cong" : "That bai");
     }
@@ -285,7 +302,7 @@ public class AdminMenu {
         var list = adminService.getAllSupport();
 
         if (list.isEmpty()) {
-            System.out.println("Khong co support nao!");
+            System.out.println("Khong co support nao");
             return;
         }
 

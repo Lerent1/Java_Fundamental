@@ -9,8 +9,18 @@ public class EquipmentService {
     private final EquipmentDAO dao = new EquipmentDAO();
 
     public boolean addEquipment(String name, int total) {
+        if (name == null || name.trim().isEmpty()) {
+            System.out.println("Ten thiet bi khong duoc de trong!");
+            return false;
+        }
+
         if (total <= 0) {
             System.out.println("Tong so luong phai > 0");
+            return false;
+        }
+
+        if (dao.isNameExist(name)) {
+            System.out.println("Thiet bi da ton tai!");
             return false;
         }
 
@@ -31,5 +41,9 @@ public class EquipmentService {
 
     public boolean delete(int id) {
         return dao.delete(id);
+    }
+
+    public Equipment getById(int id) {
+        return dao.findById(id);
     }
 }

@@ -23,7 +23,7 @@ public class AuthUI {
                 case 1 -> register();
                 case 2 -> login();
                 case 3 -> System.exit(0);
-                default -> System.out.println("Lua chon khong hop le!");
+                default -> System.out.println("Lua chon khong hop le");
             }
         }
     }
